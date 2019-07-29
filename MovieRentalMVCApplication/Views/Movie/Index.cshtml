@@ -1,0 +1,47 @@
+﻿@model IEnumerable<MovieRentalMVCApplication.Models.Movie>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Movie Details</h2>
+
+<button>@Html.ActionLink("NewMovie", "New", new { @class = "btn btn-primary" })</button>
+@if (!Model.Any())
+{
+    <h4>No movies yet</h4>
+}
+else
+{
+    <table class="table table-bordered table-striped">
+
+        <tr>
+
+            <th>Movie Name</th>
+            <th>Genre</th>
+
+        </tr>
+        @foreach (var m in Model)
+        {
+            <tr>
+
+                <td>@Html.ActionLink(m.MovieName, "Edit", new { m.Id })</td>
+                <td>@m.Genre.GenreName</td>
+                <td><button>@Html.ActionLink("Delete", "Delete", new { m.Id })</button></td>
+
+            </tr>
+        }
+    </table>
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
